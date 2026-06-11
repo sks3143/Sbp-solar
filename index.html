@@ -15,12 +15,12 @@ color:white;
 
 .hero{
 background:linear-gradient(135deg,#0a7d2c,#17b978);
-padding:40px 20px;
+padding:30px 20px;
 text-align:center;
 border-radius:0 0 25px 25px;
 }
 
-.hero h1{font-size:26px;margin:0;}
+.hero h1{margin:0;font-size:26px;}
 .hero p{opacity:0.9;}
 
 .container{
@@ -32,24 +32,24 @@ padding:15px;
 .card{
 background:#121a2a;
 margin:15px 0;
-padding:20px;
+padding:18px;
 border-radius:15px;
 box-shadow:0 5px 20px rgba(0,0,0,0.3);
 }
 
 h2{color:#17b978;}
 
-ul{line-height:1.8;}
+ul{line-height:1.7;}
 
 button{
 width:100%;
-padding:15px;
+padding:14px;
 border:none;
 border-radius:12px;
 font-size:16px;
 font-weight:bold;
 cursor:pointer;
-transition:0.3s;
+margin-top:10px;
 }
 
 .primary{
@@ -59,22 +59,11 @@ color:black;
 
 .primary:hover{
 background:#0df2a0;
-transform:scale(1.03);
 }
 
 .secondary{
 background:#2b3448;
 color:white;
-}
-
-.fixed{
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-background:#0b1220;
-padding:10px;
-box-shadow:0 -5px 20px rgba(0,0,0,0.5);
 }
 
 .avatar{
@@ -98,12 +87,154 @@ gap:10px;
 flex:1;
 }
 
+.fixed{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#0b1220;
+padding:10px;
+box-shadow:0 -5px 20px rgba(0,0,0,0.5);
+}
+
 .small{
 font-size:13px;
-opacity:0.7;
+opacity:0.8;
+}
+
+/* solar image */
+.solar-img{
+width:100%;
+border-radius:15px;
+margin-top:10px;
 }
 </style>
 </head>
+
+<body>
+
+<div class="hero">
+<h1>☀️ Sambalpur Solar Assistant</h1>
+<p>3kW Rooftop Solar | Free Consultation | Odisha</p>
+</div>
+
+<div class="container">
+
+<!-- LANGUAGE -->
+<div class="card">
+<h2>🌐 Language Select</h2>
+<div class="lang">
+<button class="secondary" onclick="setLang('hi')">Hindi</button>
+<button class="secondary" onclick="setLang('od')">Odia</button>
+</div>
+</div>
+
+<!-- AVATAR -->
+<div class="card" style="text-align:center;">
+<h2>🤖 Solar Assistant</h2>
+
+<img class="avatar" src="https://i.imgur.com/3XjM6aX.png">
+
+<p>Tap to listen full solar explanation</p>
+
+<button class="primary" onclick="speakSolar()">🔊 Play Voice</button>
+</div>
+
+<!-- SOLAR IMAGE -->
+<div class="card">
+<h2>🏠 Rooftop Solar Example</h2>
+
+<img class="solar-img"
+src="https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=1200&q=80">
+
+<p class="small">
+Yeh ek typical rooftop solar installation hai jo ghar ki chhat par lagta hai.
+</p>
+</div>
+
+<!-- INFO -->
+<div class="card">
+<h2>⚡ 3kW Overview</h2>
+<ul>
+<li>5–7 Solar Panels</li>
+<li>180–250 sq ft Roof Space</li>
+<li>10–15 Units Daily</li>
+<li>300–450 Units Monthly</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>💡 Benefits</h2>
+<ul>
+<li>Electricity Bill Reduce</li>
+<li>Long Term Savings</li>
+<li>Clean Energy</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>📍 Service Area</h2>
+<p>Sambalpur + 50 KM Radius</p>
+</div>
+
+<!-- FORM -->
+<div class="card">
+<h2>📞 Free Consultation</h2>
+<p class="small">Eligibility check aur callback ke liye form fill karein</p>
+
+<a href="YOUR_GOOGLE_FORM_LINK">
+<button class="primary">Request Callback</button>
+</a>
+</div>
+
+</div>
+
+<!-- STICKY -->
+<div class="fixed">
+<a href="https://docs.google.com/forms/d/1ppNXP9k9hCWcQxA46nupnfmS1Pb1GVs9Ix-wuXTsim0/preview">
+<button class="primary">⚡ Check Eligibility Now</button>
+</a>
+</div>
+
+<script>
+
+let lang="hi";
+
+function setLang(l){
+lang=l;
+alert(l=="hi"?"Hindi Selected":"Odia Selected");
+}
+
+function speakSolar(){
+
+let hi=`Namaste.
+Main Solar Assistant hoon.
+3 kilowatt rooftop solar system ghar ki chhat par lagta hai.
+Isme 5 se 7 panels hote hain.
+Daily 10 se 15 unit bijli generate hoti hai.
+Monthly 300 se 450 unit milti hai.
+Agar interested ho to form fill karein.`;
+
+let od=`Namaskar.
+Mu Solar Assistant.
+3 kilowatt rooftop solar system ghara chhata upare lagai jae.
+Ethi 5 ru 7 panel lage.
+Dina 10 ru 15 unit bijuli utpadan kare.
+Mahina 300 ru 450 unit mile.
+Form fill karantu.`;
+
+let speech=new SpeechSynthesisUtterance(lang=="hi"?hi:od);
+speech.lang="hi-IN";
+speech.rate=0.9;
+speech.pitch=1;
+
+window.speechSynthesis.speak(speech);
+}
+
+</script>
+
+</body>
+</html></head>
 
 <body>
 
@@ -160,7 +291,7 @@ opacity:0.7;
 <h2>📞 Free Consultation</h2>
 <p class="small">Click below to check eligibility & request callback</p>
 
-<a href="YOUR_GOOGLE_FORM_LINK">
+<a href="https://docs.google.com/forms/d/1ppNXP9k9hCWcQxA46nupnfmS1Pb1GVs9Ix-wuXTsim0/preview">
 <button class="primary">Request Callback</button>
 </a>
 </div>
